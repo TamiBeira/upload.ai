@@ -3,6 +3,7 @@ import { Button } from "./components/ui/button"
 import { Textarea } from "./components/ui/textarea"
 import { Separator } from "./components/ui/separator"
 import { Label } from "@radix-ui/react-label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./components/ui/select"
 export function App() {
 
   return (
@@ -43,11 +44,11 @@ export function App() {
               <input type="file" name="video" id="video" accept="video/mp4" className="sr-only" />
               <Separator />
 
-              <div className="space-y-1">
+              <div className="space-y-2">
                 <Label htmlFor="transcription_prompt">Prompt de transcrição</Label>
                 <Textarea 
                   id="transcription_prompt" 
-                  className="min-h-20 leading-relaxed" 
+                  className="h-20 leading-relaxed resize-none" 
                   placeholder="Inclua palavras-chave mencionadas no vídeo separadas por vírgula (,)."
                   />
 
@@ -59,7 +60,25 @@ export function App() {
 
             </form>
 
-            
+            <Separator />
+
+            <form className="space-y-6">
+              <div className="space-y-2">
+                <Label>Modelo</Label>
+                <Select disabled defaultValue="gpt3.5">
+                  <SelectTrigger>
+                    <SelectValue />
+                    <SelectContent>
+                      <SelectItem value="gpt3.5">GPT 3.5-turbo 16k</SelectItem>
+                    </SelectContent>
+                  </SelectTrigger>
+                </Select>
+                <span className="block text-xs text-muted-foreground italic">
+                  Você poderá customizar está opção em breve.
+                </span>
+              </div>
+              <Separator />
+            </form>
           </aside>
         </main>
       </div>
